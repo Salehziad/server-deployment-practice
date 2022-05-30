@@ -19,12 +19,15 @@ describe('sss', () => {
         expect(typeof response.body).toBe('object')
     })
 
-    test('Data response test with middlewar function', async () => {
-        const response = await request.get('/test');
-        expect(response.status).toBe(200);
-        expect(typeof response.body).toBe('object')
+    test('Page not found test', async () => {
+        const response = await request.get('/sss');
+        expect(response.status).toBe(404);
     })
 
+    test('internal server error test', async () => {
+        const response = await request.get('/error500');
+        expect(response.status).toBe(500);
+    })
 
 
 })
